@@ -30,7 +30,7 @@
 ## 🌸 Usage
 To get started with **CodeCriticBench**, clone the repository and follow these steps:
 ```bash
-git clone https://github.com/xxzcc/CodeCriticBench.git
+git clone https://github.com/multimodal-art-projection/CodeCriticBench.git
 cd CodeCriticBench
 ```
 ## 💻 Run Evaluation Script
