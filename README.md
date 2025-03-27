@@ -37,11 +37,71 @@ cd CodeCriticBench
 Use the provided evaluation scripts for automated and manual assessment of model outputs. For example:
 - **Model Inference**: Run inference on your model:
 ```bash
-python src/infer_qwen.py --model_name 'Qwen2.5-Coder-32B-Instruct' --model_path='./Qwen2.5-Coder-32B-Instruct' --input_data_path='./data/CodeCriticBench.jsonl' --output_data_path='./data/output/'
+src/output_claude35.jsonl
+The question field in the src/src/output_claude35.jsonl file is the input to the model.
+The generated field in the src file is the output sent to the model
+
+src/output_claude35.jsonl
+{
+    'question':xxx,   # model input
+    'generated': xxx, # model output
+    ..., # Data other details
+}
+The dataset has a total of 9,000 records, of which 4,300 are level 1, 4,300 are level 2, and 400 are level 3.
+
 ```
 - **Score Evaluation**: Score the model outputs:
 ```bash
-python src/evaluate.py
+cd src
+python3 eval_all_end_to_end.py
+
+The output of claude is
+Input File: ./output_claude35.jsonl
+-------------------- Basic Evaluation ACC (%) --------------------
++-------+---------+---------+
+|  All  | CodeGen | Code QA |
++-------+---------+---------+
+| 68.79 |  66.06  |  76.73  |
++-------------------------------------------+
+| MBPP  | CodeForce | LiveCodeBench | Debug |
++-------+-----------+---------------+-------+
+| 58.00 |   70.88   |     68.88     | 66.50 |
++---------------------------------------------------------------------------------------+
+|  FP   |  AP   |  SE   |  DA   |  MA   |  DW   |  ML   |  SC   |  DB   |  MM   |  OS   |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| 73.00 | 87.00 | 78.00 | 75.00 | 87.00 | 70.00 | 80.00 | 78.00 | 70.00 | 86.00 | 60.00 |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+
+-------------------- Advanced Evaluation MSE --------------------
++-------+---------+---------+
+|  All  | CodeGen | Code QA |
++-------+---------+---------+
+|  3.78 |   4.73  |   1.02  |
++-------------------------------------------+
+| MBPP  | CodeForce | LiveCodeBench | Debug |
++-------+-----------+---------------+-------+
+|  3.66 |    5.26   |      5.29     |  4.70 |
++---------------------------------------------------------------------------------------+
+|  FP   |  AP   |  SE   |  DA   |  MA   |  DW   |  ML   |  SC   |  DB   |  MM   |  OS   |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+|  1.73 |  0.76 |  1.07 |  0.81 |  1.06 |  1.04 |  1.19 |  0.87 |  0.85 |  0.82 |  1.02 |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+For more fine-grained subset across different dimensions, split data according to subset name and dimension name
+
+-------------------- Debug Evaluation Pass@1 ACC --------------------
++-------+-------+-------+-------+-------+-------+-------+-------+
+|  All  |  CME  |  DME  | IVDPE | MLME  |  EVE  |  DME  |  SE   |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| 54.00 |  0.00 |  3.64 | 33.33 |  5.56 | 10.00 | 16.67 | 14.29 |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|  DF   |  SV   |  LSI  |  RE   |  SME  |  CQME |  LE   |  TVE  |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| 18.42 | 47.27 |  0.00 | 41.25 |  9.52 | 12.24 | 22.97 |  5.26 |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|  NCE  |  EHE  |  UPAE |  FIE  |  TE   |  ILE  |  PI   |  CME  |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|  3.28 |  4.76 | 15.62 |  1.37 | 26.19 |  7.35 | 29.89 | 75.00 |
++-------+-------+-------+-------+-------+-------+-------+-------+
 ```
 ## 📰 Evaluation Results
 Evaluation results will be displayed as follows:
