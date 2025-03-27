@@ -53,6 +53,7 @@ The dataset has a total of 9,000 records, of which 4,300 are level 1, 4,300 are 
 - **Score Evaluation**: Score the model outputs:
 ```bash
 cd src
+wget https://huggingface.co/datasets/m-a-p/CodeCriticBench/resolve/main/source/output_claude35.jsonl
 python3 eval_all_end_to_end.py
 
 The output of claude is
