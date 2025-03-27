@@ -1,4 +1,6 @@
 ```
+wget https://huggingface.co/datasets/m-a-p/CodeCriticBench/resolve/main/source/output_claude35.jsonl
+
 python3 eval_all_end_to_end.py
 
 Input File: ./output_claude35.jsonl
