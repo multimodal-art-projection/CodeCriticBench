@@ -28,7 +28,7 @@
   - **Manual Evaluation**: Code QA tasks involve 20 volunteers with programming experience who independently assess answers, with final labels determined via majority voting.
 
 
-## 🌸 Framework Overview
+## 📊 Data Collection
 
 <div align="center">
 <img src="./figures/data_collection_v2.png" width="900" >
