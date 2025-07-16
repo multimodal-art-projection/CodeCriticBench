@@ -31,7 +31,7 @@
 ## 📊 Data Collection
 
 <div align="center">
-<img src="./figures/data_collection_v2.png" width="900" >
+<img src="./figures/data_collection_v2.png" width="600" >
 </div>
 
 ## 📊 Main Results
